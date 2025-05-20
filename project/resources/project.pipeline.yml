@@ -16,4 +16,4 @@ resources:
       clusters:
         - label: default
           num_workers: 1
-          node_type_id: Standard_E8_v3
+          node_type_id: Standard_DS3_v2
