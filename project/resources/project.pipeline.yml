@@ -3,6 +3,7 @@ resources:
   pipelines:
     project_pipeline:
       name: project_pipeline
+      serverless: true
       catalog: wind
       schema: project_${bundle.target}
       libraries:
@@ -11,8 +12,3 @@ resources:
 
       configuration:
         bundle.sourcePath: ${workspace.file_path}/src
-
-      clusters:
-        - label: default
-          num_workers: 1
-          node_type_id: Standard_DS3_v2
