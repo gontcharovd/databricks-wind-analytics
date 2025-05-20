@@ -3,8 +3,7 @@ resources:
   pipelines:
     project_pipeline:
       name: project_pipeline
-      ## Specify the 'catalog' field to configure this pipeline to make use of Unity Catalog:
-      # catalog: catalog_name
+      catalog: wind
       schema: project_${bundle.target}
       libraries:
         - notebook:
