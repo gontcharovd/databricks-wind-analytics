@@ -12,3 +12,8 @@ resources:
 
       configuration:
         bundle.sourcePath: ${workspace.file_path}/src
+
+      clusters:
+        - label: default
+          num_workers: 1
+          node_type_id: Standard_E8_v3
