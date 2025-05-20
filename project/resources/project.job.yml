@@ -10,13 +10,8 @@ resources:
           interval: 1
           unit: DAYS
 
-      email_notifications:
-        on_failure:
-          - denis@gontcharov.eu
-
       tasks:
         - task_key: notebook_task
-          job_cluster_key: job_cluster
           notebook_task:
             notebook_path: ../src/notebook.ipynb
         
@@ -26,23 +21,21 @@ resources:
           pipeline_task:
             pipeline_id: ${resources.pipelines.project_pipeline.id}
         
-        - task_key: main_task
-          depends_on:
-            - task_key: refresh_pipeline
-          job_cluster_key: job_cluster
-          python_wheel_task:
-            package_name: project
-            entry_point: main
-          libraries:
-            # By default we just include the .whl file generated for the project package.
-            # See https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
-            # for more information on how to add other libraries.
-            - whl: ../dist/*.whl
+        # - task_key: main_task
+        #   environment_key: default
+        #   depends_on:
+        #     - task_key: refresh_pipeline
+        #   python_wheel_task:
+        #     package_name: project
+        #     entry_point: main
+        #   libraries:
+        #     # By default we just include the .whl file generated for the project package.
+        #     # See https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
+        #     # for more information on how to add other libraries.
+        #     - whl: ../dist/*.whl
 
-      job_clusters:
-        - job_cluster_key: job_cluster
-          new_cluster:
-            spark_version: 16.3.x-scala2.12
-            node_type_id: Standard_DS3_v2
-            data_security_mode: SINGLE_USER
-            num_workers: 1
+      # Configure serverless compute
+      environments:
+        - environment_key: default
+          spec:
+            client: '1'
