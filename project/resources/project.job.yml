@@ -10,10 +10,6 @@ resources:
           interval: 1
           unit: DAYS
 
-      email_notifications:
-        on_failure:
-          - denis@gontcharov.eu
-
       tasks:
         - task_key: notebook_task
           job_cluster_key: job_cluster
