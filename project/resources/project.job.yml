@@ -39,3 +39,5 @@ resources:
         - environment_key: default
           spec:
             client: '1'
+            dependencies:
+              - /Workspace/Users/denis@gontcharov.eu/.bundle/project/dev/artifacts/.internal/project-*.whl
